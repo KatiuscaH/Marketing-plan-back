@@ -9,6 +9,7 @@ class UserSchema extends Schema {
       table.string('name', 80).notNullable()
       table.string('lastname', 80).notNullable()
       table.integer('periodos_id', 80).unsigned().notNullable()
+      table.string('email', 80).notNullable().unique()
       table.string('password', 60).notNullable()
       table.string('rol', 60).notNullable()
       table.timestamps()

@@ -21,6 +21,7 @@ Route
     Route.get('user/:id', 'UserController.findOne')
     Route.post('users', 'UserController.create')
     Route.put('user/:id', 'UserController.update')
+    Route.post('/login', 'AuthController.login')
   })
   .prefix('api/v1')
 

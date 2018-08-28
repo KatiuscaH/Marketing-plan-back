@@ -9,10 +9,11 @@ class UserController {
         return await User.find(params.id)
     }
     async create({ request }) {
-        const body = request.only(['name', 'lastname', 'periodos_id', 'password', 'rol'])
+        const body = request.only(['name', 'lastname', 'periodos_id', 'password', 'rol', 'email'])
         const rules = {
             name: 'required|string',
             lastname: 'required|string',
+            email: 'required|email|unique:users,email',
             periodos_id: 'required|number',
             rol: 'required',
             password: 'required'
@@ -20,6 +21,7 @@ class UserController {
         const validation = await validate(body, rules, {
             'name.required': 'Ingrese el nombre',
             'lastname.required': 'Ingrese apellido',
+            'email.required': 'Ingrese email',
             'rol.required': 'Ingrese un rol válido',
             'password.required': 'Ingrese contraseña'
         })
