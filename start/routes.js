@@ -15,9 +15,15 @@
 const Estrategias = use('App/Models/Estrategia')
 const Route = use('Route')
 
+Route
+  .group(() => {
+    Route.get('users', 'UserController.findAll')
+    Route.get('user/:id', 'UserController.findOne')
+    Route.post('users', 'UserController.create')
+    Route.put('user/:id', 'UserController.update')
+  })
+  .prefix('api/v1')
+
 Route.get('/', ({ request }) => {
   return { greeting: 'Hello world in JSON' }
 });
-Route.get('/test', async ({request})=>{
-  return await Estrategias.all();
-})
