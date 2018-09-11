@@ -15,13 +15,14 @@
 const Estrategias = use('App/Models/Estrategia')
 const Route = use('Route')
 
-Route
-  .group(() => {
-    Route.get('users', 'UserController.findAll')
-    Route.get('user/:id', 'UserController.findOne')
-    Route.post('users', 'UserController.create')
-    Route.put('user/:id', 'UserController.update')
+Route.group(() => {
+    /*Rutas para usuario*/
+    Route.resource('user', 'UserController').apiOnly()
+    /*Rutas de periodo*/
+    Route.resource('period', 'PeriodController').apiOnly()
+    /*Rutas de autorización*/
     Route.post('/login', 'AuthController.login')
+    Route.post('me', 'AuthController.me')
   })
   .prefix('api/v1')
 
