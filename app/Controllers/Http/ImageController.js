@@ -14,7 +14,15 @@ class ImageController {
         if (!image.moved()) {
             return profilePic.error()
         }
-        return {image: Env.get('APP_URL')+'/uploads/images/'+nombre};
+        return {
+            data: {
+                id:nombre,
+                size: image.size,
+                link: Env.get('APP_URL')+'/uploads/images/'+nombre
+            },
+            success: true,
+            status:200
+        };
     }
 }
 
