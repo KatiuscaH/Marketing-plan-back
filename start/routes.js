@@ -23,8 +23,9 @@ Route.group(() => {
     /*Rutas de autorización*/
     Route.post('/login', 'AuthController.login')
     Route.post('me', 'AuthController.me')
+    Route.post('image', 'ImageController.store')
   })
-  .prefix('api/v1')
+  .prefix('api')
 
 Route.get('/', ({ request }) => {
   return { greeting: 'Hello world in JSON' }
