@@ -7,8 +7,9 @@ class MarketingSchema extends Schema {
     this.create('marketings', (table) => {
       table.increments()
       table.string('plan')
-      table.string('estudiantes')
-      table.integer('usuario_id').unsigned().notNullable()
+      table.json('estudiantes').nullable()
+      table.integer('usuario_id').references('id').inTable('users')
+      table.integer('empresario_id').references('id').inTable('users')
       table.timestamps()
     })
   }
