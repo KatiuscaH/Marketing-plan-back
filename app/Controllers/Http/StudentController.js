@@ -4,7 +4,7 @@ const Period = use('App/Models/Periodo')
 const { validate } = use('Validator')
 class StudentController {
     async index() {
-        return await User.where({rol:1})
+        return await User.query().where({rol:1})
     }
     async show({ params }) {
         return await User.find(params.id)
