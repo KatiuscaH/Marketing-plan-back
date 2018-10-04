@@ -17,7 +17,6 @@ class User extends Model {
       }
     })
   }
-
   /**
    * A relationship on tokens is required for auth to
    * work. Since features like `refreshTokens` or
@@ -30,6 +29,9 @@ class User extends Model {
    */
   tokens () {
     return this.hasMany('App/Models/Token')
+  }
+  periodo(){
+    return this.belongsTo('App/Models/Periodo')
   }
 }
 

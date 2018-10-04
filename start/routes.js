@@ -16,15 +16,17 @@ const Estrategias = use('App/Models/Estrategia')
 const Route = use('Route')
 
 Route.group(() => {
-    /*Rutas para usuario*/
-    Route.resource('user', 'UserController').apiOnly()
-    /*Rutas de periodo*/
-    Route.resource('period', 'PeriodController').apiOnly()
-    /*Rutas de autorización*/
-    Route.post('/login', 'AuthController.login')
-    Route.post('me', 'AuthController.me')
-    Route.post('image', 'ImageController.store')
-  })
+  /*Rutas para usuario*/
+  Route.resource('user', 'UserController').apiOnly()
+  /*Rutas de periodo*/
+  Route.resource('period', 'PeriodController').apiOnly()
+  /* Rutas estudiante */
+  Route.resource('student', 'StudentController')
+  /*Rutas de autorización*/
+  Route.post('/login', 'AuthController.login')
+  Route.post('me', 'AuthController.me')
+  Route.post('image', 'ImageController.store')
+})
   .prefix('api')
 
 Route.get('/', ({ request }) => {
