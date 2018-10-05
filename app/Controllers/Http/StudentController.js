@@ -7,42 +7,29 @@ class StudentController {
         return await User
             .query()
             .where({ rol: 1 })
-            .with('periodo')
-            .fetch()
     }
     async show({ params }) {
         return await User.find(params.id)
     }
     async store({ request }) {
-        const userData = request.only(['name', 'lastname', 'password', 'email'])
-        const periodData = request.only(['period', 'year'])
+        const userData = request.only(['name', 'lastname', 'password', 'email', 'periodo', 'year'])
         const rulesUser = {
             name: 'required|string',
             lastname: 'required|string',
             email: 'required|email|unique:users,email',
             password: 'required',
-            year: 'number'
-        }
-        const rulePeriod = {
-            period: 'required|number',
+            year: 'number',
+            periodo: 'required|number',
             year: 'required|number'
         }
         const userValidation = await validate(userData, rulesUser)
-        const ruleValidation = await validate(periodData, rulePeriod)
         if (userValidation.fails()) {
             return { error: userValidation._errorMessages }
-        }
-        if (ruleValidation.fails()) {
-            return { error: ruleValidation._errorMessages }
-        }
-        let periodo = await Period.query().where({ year: periodData.year, period: periodData.period }).first()
-        if (!periodo) {
-            periodo = await Period.create(periodData)
         }
         const user = new User()
         user.fill(userData)
         user.rol = 1;
-        await user.periodo().associate(periodo)
+        await user.save()
         return user
     }
     async update({ params, request }) {
