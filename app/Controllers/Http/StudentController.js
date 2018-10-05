@@ -4,7 +4,11 @@ const Period = use('App/Models/Periodo')
 const { validate } = use('Validator')
 class StudentController {
     async index() {
-        return await User.query().where({rol:1})
+        return await User
+            .query()
+            .where({ rol: 1 })
+            .with('periodo')
+            .fetch()
     }
     async show({ params }) {
         return await User.find(params.id)
@@ -28,11 +32,11 @@ class StudentController {
         if (userValidation.fails()) {
             return { error: userValidation._errorMessages }
         }
-        if(ruleValidation.fails()){
-            return {error:ruleValidation._errorMessages}
+        if (ruleValidation.fails()) {
+            return { error: ruleValidation._errorMessages }
         }
-        let periodo = await Period.query().where({year: periodData.year, period: periodData.period}).first()
-        if(!periodo){
+        let periodo = await Period.query().where({ year: periodData.year, period: periodData.period }).first()
+        if (!periodo) {
             periodo = await Period.create(periodData)
         }
         const user = new User()
