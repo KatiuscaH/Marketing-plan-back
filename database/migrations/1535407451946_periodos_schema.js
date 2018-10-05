@@ -7,7 +7,7 @@ class PeriodosSchema extends Schema {
     this.create('periodos', (table) => {
       table.increments()
       table.integer('year').notNullable()
-      table.integer('period').notNullable()
+      table.enum('period', [1,2]).notNullable()
       table.timestamps()
     })
   }
