@@ -38,7 +38,6 @@ class StudentController {
             name: 'required|string',
             lastname: 'required|string',
             email: 'required|email|unique:users,email',
-            password: 'required',
             year: 'number',
             periodo: 'required|number',
             year: 'required|number'
