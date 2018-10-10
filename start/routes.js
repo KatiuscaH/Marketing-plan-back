@@ -22,6 +22,8 @@ Route.group(() => {
   Route.resource('period', 'PeriodController').apiOnly()
   /* Rutas estudiante */
   Route.resource('student', 'StudentController')
+  /* Rutas empresario */
+  Route.resource('empresario', 'EmpresarioController')
   /*Rutas de autorización*/
   Route.post('/login', 'AuthController.login')
   Route.post('me', 'AuthController.me')

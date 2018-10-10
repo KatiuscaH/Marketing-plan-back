@@ -18,9 +18,8 @@ class StudentController {
             lastname: 'required|string',
             email: 'required|email|unique:users,email',
             password: 'required',
-            year: 'number',
-            periodo: 'required|number',
-            year: 'required|number'
+            year: 'required|number',
+            periodo: 'required|number'
         }
         const userValidation = await validate(userData, rulesUser)
         if (userValidation.fails()) {
@@ -38,7 +37,7 @@ class StudentController {
             name: 'required|string',
             lastname: 'required|string',
             email: 'required|email|unique:users,email',
-            year: 'number',
+            year: 'required|number',
             periodo: 'required|number',
             year: 'required|number'
         }

@@ -8,7 +8,7 @@ class MarketingSchema extends Schema {
       table.increments()
       table.string('plan')
       table.json('estudiantes').nullable()
-      table.integer('usuario_id').unsigned().notNullable()
+      table.integer('estudiante_id').unsigned().notNullable()
       table.integer('empresario_id').unsigned().notNullable()
       table.timestamps()
     })

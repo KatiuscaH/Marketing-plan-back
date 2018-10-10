@@ -30,9 +30,6 @@ class User extends Model {
   tokens () {
     return this.hasMany('App/Models/Token')
   }
-  periodo(){
-    return this.belongsTo('App/Models/Periodo')
-  }
 }
 
 module.exports = User
