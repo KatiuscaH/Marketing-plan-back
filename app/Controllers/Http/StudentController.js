@@ -36,7 +36,7 @@ class StudentController {
         const rulesUser = {
             name: 'required|string',
             lastname: 'required|string',
-            email: 'required|email|unique:users,email',
+            email: 'email|unique:users,email',
             year: 'required|number',
             periodo: 'required|number',
             year: 'required|number'
