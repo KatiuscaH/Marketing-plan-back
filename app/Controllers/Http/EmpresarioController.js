@@ -26,7 +26,7 @@ class EmpresarioController {
         }
         const user = new User()
         user.fill(userData)
-        user.rol = 1;
+        user.rol = 2;
         await user.save()
         return user
     }
