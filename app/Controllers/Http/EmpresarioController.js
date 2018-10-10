@@ -30,6 +30,32 @@ class EmpresarioController {
         await user.save()
         return user
     }
+    async update({ params, request }) {
+        const userData = request.only(['name', 'lastname', 'password', 'email', 'periodo', 'year'])
+        const rulesUser = {
+            name: 'required|string',
+            lastname: 'required|string',
+            email: 'required|email|unique:users,email',
+            year: 'required|number',
+            periodo: 'required|number',
+            year: 'required|number'
+        }
+        const userValidation = await validate(userData, rulesUser)
+        if (userValidation.fails()) {
+            return { error: userValidation._errorMessages }
+        }
+        const user = await User.find(params.id)
+        user.merge(request.post())
+        await user.save()
+        return user
+    }
+    async destroy({ params }) {
+        const user = await User.find(params.id)
+        await user.tokens()
+            .where('user_id', user.id)
+            .delete()
+        return await user.delete()
+    }
 }
 
 module.exports = EmpresarioController
