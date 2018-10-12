@@ -26,7 +26,7 @@ Route.group(() => {
   Route.resource('empresario', 'EmpresarioController').apiOnly()
   /*Rutas de autorización*/
   Route.post('/login', 'AuthController.login')
-  Route.post('me', 'AuthController.me')
+  Route.post('/me', 'AuthController.me')
   Route.post('image', 'ImageController.store')
 })
   .prefix('api')
