@@ -9,12 +9,11 @@ class UserController {
         return await User.find(params.id)
     }
     async store({ request }) {
-        const body = request.only(['name', 'lastname', 'periodos_id', 'password', 'rol', 'email'])
+        const body = request.only(['name', 'lastname', 'password', 'rol', 'email'])
         const rules = {
             name: 'required|string',
             lastname: 'required|string',
             email: 'required|email|unique:users,email',
-            periodos_id: 'required|number',
             rol: 'required',
             password: 'required'
         }
@@ -26,7 +25,7 @@ class UserController {
             'password.required': 'Ingrese contraseña'
         })
         if (validation.fails()) {
-            return {error: validation._errorMessages}
+            return { error: validation._errorMessages }
         }
         const user = new User()
         user.fill(body)
@@ -39,11 +38,11 @@ class UserController {
         await user.save()
         return user
     }
-    async destroy({ params}) {
+    async destroy({ params }) {
         const user = await User.find(params.id)
         await user.tokens()
-        .where('user_id',user.id)
-        .delete()
+            .where('user_id', user.id)
+            .delete()
         return await user.delete()
     }
 }

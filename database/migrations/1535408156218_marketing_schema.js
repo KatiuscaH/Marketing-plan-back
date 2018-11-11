@@ -3,17 +3,27 @@
 const Schema = use('Schema')
 
 class MarketingSchema extends Schema {
-  up () {
+  up() {
     this.create('marketings', (table) => {
       table.increments()
       table.string('plan')
       table.json('estudiantes').nullable()
-      table.integer('estudiante_id').unsigned().notNullable()
-      table.integer('empresario_id').unsigned().notNullable()
+      table.text('presentacion', 'longtext')
+      table.text('historia', 'longtext')
+      table.text('pest', 'longtext')
+      table.text('porter', 'longtext')
+      table.text('cuatrop', 'longtext')
+      table.text('clientes', 'longtext')
+      table.text('competencia', 'longtext')
+      table.text('proveedores', 'longtext')
+      table.text('bcg', 'longtext')
+      table.text('dofa', 'longtext')
+      table.text('mefi', 'longtext')
+      table.text('ansoff', 'longtext')
       table.timestamps()
     })
   }
-  down () {
+  down() {
     this.drop('marketings')
   }
 }

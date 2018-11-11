@@ -3,21 +3,21 @@
 const Schema = use('Schema')
 
 class UserSchema extends Schema {
-  up () {
+  up() {
     this.create('users', (table) => {
       table.increments()
       table.string('name', 80).notNullable()
       table.string('lastname', 80).notNullable()
-      table.integer('periodo_id', 80).unsigned().notNullable()
       table.string('email', 80).notNullable().unique()
       table.string('password', 60).notNullable()
-      table.enu('rol', [0,1,2]).notNullable()
+      table.integer('rol').notNullable()
       table.integer('year').notNullable()
-      table.enu('periodo', [1,2]).notNullable()
+      table.enu('periodo', [1, 2]).notNullable()
+      table.integer('marketing_id').unsigned()
       table.timestamps()
     })
   }
-  down () {
+  down() {
     this.drop('users')
   }
 }

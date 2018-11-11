@@ -1,6 +1,5 @@
 'use strict'
 const User = use('App/Models/User')
-const Period = use('App/Models/Periodo')
 const { validate } = use('Validator')
 class StudentController {
     async index() {

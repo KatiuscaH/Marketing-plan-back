@@ -24,12 +24,16 @@ Route.group(() => {
   Route.resource('student', 'StudentController').apiOnly()
   /* Rutas empresario */
   Route.resource('empresario', 'EmpresarioController').apiOnly()
+  /* Rutas marketing */
+  Route.resource('marketing', 'MarketingController').apiOnly()
+  Route.put('/marketing/:id/presentacion', 'MarketingController.presentacion')
+}).prefix('api')
+Route.group(() => {
   /*Rutas de autorización*/
   Route.post('/login', 'AuthController.login')
   Route.post('/me', 'AuthController.me')
   Route.post('image', 'ImageController.store')
-})
-  .prefix('api')
+}).prefix('api')
 
 Route.get('/', ({ request }) => {
   return { greeting: 'Hello world in JSON' }
