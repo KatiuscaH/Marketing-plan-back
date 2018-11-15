@@ -18,3 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('empresario', 'EmpresarioController');
+Route::apiResource('estudiante', 'EstudianteController');
+
+Route::post('login', 'AuthController@login');

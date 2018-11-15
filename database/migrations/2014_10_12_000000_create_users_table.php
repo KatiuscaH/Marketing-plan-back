@@ -21,8 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('rol');
             $table->integer('year');
-            $table->enum('periodo', [1, 2]);
-            $table->integer('marketing_id');
+            $table->integer('periodo');
+            $table->integer('marketing_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
