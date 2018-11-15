@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateObjetivosTable extends Migration
 {
@@ -15,6 +15,8 @@ class CreateObjetivosTable extends Migration
     {
         Schema::create('objetivos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre')->nullable($value = false);
+            $table->integer('marketing_id')->unsigned()->nullable($value = false);
             $table->timestamps();
         });
     }

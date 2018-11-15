@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateEstrategiasTable extends Migration
 {
@@ -15,6 +15,11 @@ class CreateEstrategiasTable extends Migration
     {
         Schema::create('estrategias', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
+            $table->integer('precio');
+            $table->string('estado');
+            $table->integer('tiempo');
+            $table->integer('objetivo_id')->unsigned()->nullable($value = false);
             $table->timestamps();
         });
     }
