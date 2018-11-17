@@ -18,7 +18,7 @@ class EstudianteController extends Controller
     public function index()
     {
         //
-        return response()->json(User::where('rol', 1));
+        return response()->json(User::where('rol', 1)->get());
     }
 
     /**
