@@ -91,5 +91,61 @@ class MarketingController extends Controller
     public function presentacion(Marketing $marketing, Request $request)
     {
         $marketing->presentacion = $request->presentacion;
+        $marketing->save();
+    }
+    public function historia(Marketing $marketing, Request $request)
+    {
+        $marketing->historia = $request->historia;
+        $marketing->save();
+    }
+    public function pest(Marketing $marketing, Request $request)
+    {
+        $marketing->pest = $request->pest;
+        $marketing->save();
+    }
+    public function porter(Marketing $marketing, Request $request)
+    {
+        $marketing->porter = $request->porter;
+        $marketing->save();
+    }
+    public function coatrop(Marketing $marketing, Request $request)
+    {
+        $marketing->coatrop = $request->coatrop;
+        $marketing->save();
+    }
+    public function clientes(Marketing $marketing, Request $request)
+    {
+        $marketing->clientes = $request->clientes;
+        $marketing->save();
+    }
+    public function competencia(Marketing $marketing, Request $request)
+    {
+        $marketing->competencia = $request->competencia;
+        $marketing->save();
+    }
+    public function proveedores(Marketing $marketing, Request $request)
+    {
+        $marketing->proveedores = $request->proveedores;
+        $marketing->save();
+    }
+    public function bcg(Marketing $marketing, Request $request)
+    {
+        $marketing->bcg = $request->bcg;
+        $marketing->save();
+    }
+    public function dofa(Marketing $marketing, Request $request)
+    {
+        $marketing->dofa = $request->dofa;
+        $marketing->save();
+    }
+    public function mefi(Marketing $marketing, Request $request)
+    {
+        $marketing->mefi = $request->mefi;
+        $marketing->save();
+    }
+    public function ansoff(Marketing $marketing, Request $request)
+    {
+        $marketing->ansoff = $request->ansoff;
+        $marketing->save();
     }
 }

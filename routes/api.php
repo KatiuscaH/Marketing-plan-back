@@ -24,7 +24,22 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('user', 'UserController');
     Route::apiResource('estudiante', 'EstudianteController');
     Route::apiResource('marketing', 'MarketingController');
-    Route::put('marketing/{marketing}/presentacion', 'MarketingController@presentacion');
+
+    Route::group(['prefix' => 'marketing'], function () {
+        Route::put('{marketing}/presentacion', 'MarketingController@presentacion');
+        Route::put('{marketing}/historia', 'MarketingController@historia');
+        Route::put('{marketing}/pest', 'MarketingController@pest');
+        Route::put('{marketing}/porter', 'MarketingController@porter');
+        Route::put('{marketing}/coatrop', 'MarketingController@coatrop');
+        Route::put('{marketing}/clientes', 'MarketingController@clientes');
+        Route::put('{marketing}/competencia', 'MarketingController@competencia');
+        Route::put('{marketing}/proveedores', 'MarketingController@proveedores');
+        Route::put('{marketing}/bcg', 'MarketingController@bcg');
+        Route::put('{marketing}/dofa', 'MarketingController@dofa');
+        Route::put('{marketing}/mefi', 'MarketingController@mefi');
+        Route::put('{marketing}/ansoff', 'MarketingController@ansoff');
+
+    });
 
     Route::group(['prefix' => 'auth'], function () {
         Route::post('logout', 'AuthController@logout');
