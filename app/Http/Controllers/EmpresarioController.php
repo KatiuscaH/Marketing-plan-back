@@ -16,7 +16,7 @@ class EmpresarioController extends Controller
     public function index()
     {
         //
-        return response()->json(User::where('rol', 2));
+        return response()->json(User::where('rol', 2)->get());
     }
 
     /**

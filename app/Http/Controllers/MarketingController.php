@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Marketing;
+use App\User;
 use Illuminate\Http\Request;
+use Validator;
 
 class MarketingController extends Controller
 {
@@ -15,16 +17,7 @@ class MarketingController extends Controller
     public function index()
     {
         //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        // return response()->json(auth()->marketing);
     }
 
     /**
@@ -35,7 +28,27 @@ class MarketingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userData = $request->only('plan', 'estudiantes', 'empresario_id');
+        $validatedData = Validator::make($userData, [
+            'plan' => 'required|string',
+            'estudiantes' => 'required|string',
+            'empresario_id' => 'required|numeric',
+        ]);
+        if ($validatedData->fails()) {
+            return response()->json($validatedData->errors(), 409);
+        }
+        $marketing = new Marketing;
+        $marketing->plan = $request->plan;
+        $marketing->estudiantes = $request->estudiantes;
+        $marketing->save();
+
+        $empresario = User::find($request->empresario_id);
+        return response()->json($empresario);
+        $empresario->marketing()->associate($marketing);
+        auth()->marketing()->associate($marketing);
+
+        return response()->json($marketing);
+
     }
 
     /**
@@ -45,17 +58,6 @@ class MarketingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Marketing $marketing)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Marketing  $marketing
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Marketing $marketing)
     {
         //
     }
@@ -81,5 +83,13 @@ class MarketingController extends Controller
     public function destroy(Marketing $marketing)
     {
         //
+        return response()->json([
+            'msg' => $marketing->delete(),
+        ]);
+    }
+
+    public function presentacion(Marketing $marketing, Request $request)
+    {
+        $marketing->presentacion = $request->presentacion;
     }
 }

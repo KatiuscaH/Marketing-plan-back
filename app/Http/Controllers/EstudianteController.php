@@ -76,12 +76,10 @@ class EstudianteController extends Controller
     public function update(Request $request, User $estudiante)
     {
         //
-        $userData = $request->only(['nombre', 'apellido', 'password','email','periodo', 'year']);
+        $userData = $request->only(['nombre', 'apellido','periodo', 'year']);
         $validatedData = Validator::make($userData, [
             'nombre' => 'required|string',
             'apellido' => 'required|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required',
             'periodo' => 'required|numeric',
             'year' => 'required|numeric',
         ]);
@@ -93,7 +91,7 @@ class EstudianteController extends Controller
         $estudiante->periodo = $request->periodo;
         $estudiante->year = $request->year;
         $estudiante->save();
-        return response()->json($user);
+        return response()->json($estudiante);
     }
 
     /**
