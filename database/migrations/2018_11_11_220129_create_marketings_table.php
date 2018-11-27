@@ -16,7 +16,7 @@ class CreateMarketingsTable extends Migration
         Schema::create('marketings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('plan');
-            $table->json('estudiantes')->nullable();
+            $table->string('estudiantes')->nullable();
             $table->longText('presentacion')->nullable();
             $table->longText('historia')->nullable();
             $table->longText('pest')->nullable();
