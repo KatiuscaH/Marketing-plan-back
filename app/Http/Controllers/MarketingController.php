@@ -6,7 +6,7 @@ use App\Marketing;
 use App\User;
 use Illuminate\Http\Request;
 use Validator;
-
+use App\Http\Resources\MarketingResource;
 class MarketingController extends Controller
 {
     /**
@@ -17,7 +17,7 @@ class MarketingController extends Controller
     public function index()
     {
         //
-        // return response()->json(auth()->marketing);
+        // return response()->json(auth()->user()->marketing()->get());
     }
 
     /**
@@ -43,9 +43,11 @@ class MarketingController extends Controller
         $marketing->save();
 
         $empresario = User::find($request->empresario_id);
-        return response()->json($empresario);
-        $empresario->marketing()->associate($marketing);
-        auth()->marketing()->associate($marketing);
+        $empresario->marketing_id = $marketing->id;
+        $empresario->save();
+        $user = auth()->user();
+        $user->marketing_id = $marketing->id;
+        $user->save();
 
         return response()->json($marketing);
 
@@ -57,9 +59,12 @@ class MarketingController extends Controller
      * @param  \App\Marketing  $marketing
      * @return \Illuminate\Http\Response
      */
-    public function show(Marketing $marketing)
+    public function show($marketing)
     {
         //
+        $marketing = Marketing::findOrFail($marketing);
+        $marketing->load('users');
+        return new MarketingResource($marketing);
     }
 
     /**

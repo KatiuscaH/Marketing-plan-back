@@ -7,12 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Marketing extends Model
 {
     //
-    public function estudiante()
+    public function users()
     {
-        return $this->hasOne(App\User::class)->where('rol', 1);
-    }
-    public function empresario()
-    {
-        return $this->hasOne(App\User::class)->where('rol', 2);
+        return $this->hasMany(User::class, 'marketing_id');
     }
 }
