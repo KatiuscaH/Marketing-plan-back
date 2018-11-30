@@ -97,60 +97,72 @@ class MarketingController extends Controller
     {
         $marketing->presentacion = $request->presentacion;
         $marketing->save();
+        return response()->json($marketing);
     }
     public function historia(Marketing $marketing, Request $request)
     {
         $marketing->historia = $request->historia;
         $marketing->save();
+        return response()->json($marketing);
     }
     public function pest(Marketing $marketing, Request $request)
     {
         $marketing->pest = $request->pest;
         $marketing->save();
+        return response()->json($marketing);
     }
     public function porter(Marketing $marketing, Request $request)
     {
         $marketing->porter = $request->porter;
         $marketing->save();
+        return response()->json($marketing);
     }
     public function coatrop(Marketing $marketing, Request $request)
     {
         $marketing->coatrop = $request->coatrop;
         $marketing->save();
+        return response()->json($marketing);
     }
     public function clientes(Marketing $marketing, Request $request)
     {
         $marketing->clientes = $request->clientes;
         $marketing->save();
+        return response()->json($marketing);
     }
     public function competencia(Marketing $marketing, Request $request)
     {
         $marketing->competencia = $request->competencia;
         $marketing->save();
+        return response()->json($marketing);
     }
     public function proveedores(Marketing $marketing, Request $request)
     {
         $marketing->proveedores = $request->proveedores;
         $marketing->save();
+        return response()->json($marketing);
     }
     public function bcg(Marketing $marketing, Request $request)
     {
         $marketing->bcg = $request->bcg;
         $marketing->save();
+        return response()->json($marketing);
     }
     public function dofa(Marketing $marketing, Request $request)
     {
         $marketing->dofa = $request->dofa;
         $marketing->save();
+        return response()->json($marketing);
     }
     public function mefi(Marketing $marketing, Request $request)
     {
         $marketing->mefi = $request->mefi;
         $marketing->save();
+        return response()->json($marketing);
     }
     public function ansoff(Marketing $marketing, Request $request)
     {
         $marketing->ansoff = $request->ansoff;
         $marketing->save();
+        return response()->json($marketing);
     }
 }
