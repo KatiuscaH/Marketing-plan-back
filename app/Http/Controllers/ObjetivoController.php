@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Objetivo;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ObjetivoController extends Controller
@@ -15,16 +16,9 @@ class ObjetivoController extends Controller
     public function index()
     {
         //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->json(
+            Objetivo::where('marketing_id', Auth::user()->marketing_id)->get()
+        );
     }
 
     /**
@@ -36,6 +30,10 @@ class ObjetivoController extends Controller
     public function store(Request $request)
     {
         //
+        return response()->json(Objetivo::create([
+                'nombre' => $request->nombre,
+                'marketing_id' => Auth::user()->marketing_id
+            ]));
     }
 
     /**
@@ -47,17 +45,7 @@ class ObjetivoController extends Controller
     public function show(Objetivo $objetivo)
     {
         //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Objetivo  $objetivo
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Objetivo $objetivo)
-    {
-        //
+        return response()->json($objetivo);
     }
 
     /**
@@ -70,6 +58,9 @@ class ObjetivoController extends Controller
     public function update(Request $request, Objetivo $objetivo)
     {
         //
+        $objetivo->nombre = $request->nombre;
+        $objetivo->save();
+        return response()->json($objetivo);
     }
 
     /**
@@ -78,8 +69,11 @@ class ObjetivoController extends Controller
      * @param  \App\Objetivo  $objetivo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Objetivo $objetivo)
+    public function destroy($objetivo)
     {
         //
+        return response()->json([
+            "msg" => Objetivo::destroy($objetivo)
+        ]);
     }
 }

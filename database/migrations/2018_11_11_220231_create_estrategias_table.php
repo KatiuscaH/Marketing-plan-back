@@ -15,11 +15,11 @@ class CreateEstrategiasTable extends Migration
     {
         Schema::create('estrategias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre')->nullable()->change();
+            $table->string('tactica')->nullable();
             $table->string('responsable');
             $table->string('fecha');
             $table->string('presupuesto');
-            $table->string('objetivo_id')->unsigned()->nullable()->change();
+            $table->integer('objetivo_id')->unsigned()->nullable();
             $table->string('indicador_logro');
             $table->timestamps();
         });

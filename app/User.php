@@ -30,7 +30,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function marketing()
     {
-        $this->belongsTo(Marketing::class);
+        return $this->belongsTo(Marketing::class);
     }
 
     /**

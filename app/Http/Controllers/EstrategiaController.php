@@ -14,7 +14,9 @@ class EstrategiaController extends Controller
      */
     public function index()
     {
-        //
+        $estrategias = Estrategia::whereHas('');
+
+        return response()->json($estrategias);
     }
 
     /**

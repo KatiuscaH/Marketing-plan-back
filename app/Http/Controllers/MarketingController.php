@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Marketing;
 use App\User;
-use Illuminate\Http\Request;
 use Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\MarketingResource;
+
 class MarketingController extends Controller
 {
     /**
@@ -17,7 +19,7 @@ class MarketingController extends Controller
     public function index()
     {
         //
-        // return response()->json(auth()->user()->marketing()->get());
+        return response()->json(Auth::user()->marketing);
     }
 
     /**
