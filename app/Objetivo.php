@@ -13,7 +13,7 @@ class Objetivo extends Model
         return $this->belongsTo(Marketing::class);
     }
 
-    public function estrategia(){
+    public function estrategias(){
         return $this->hasMany(Estrategia::class);
     }
 }

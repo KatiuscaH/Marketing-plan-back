@@ -76,4 +76,9 @@ class ObjetivoController extends Controller
             "msg" => Objetivo::destroy($objetivo)
         ]);
     }
+
+    public function estrategias($objetivo){
+        $objetivo = Objetivo::with('estrategias')->findOrFail($objetivo);
+        return response()->json($objetivo->estrategias);
+    }
 }
