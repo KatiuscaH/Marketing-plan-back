@@ -15,7 +15,7 @@ class CreateObjetivosTable extends Migration
     {
         Schema::create('objetivos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre')->nullable($value = false);
+            $table->text('nombre')->nullable($value = false);
             $table->integer('marketing_id')->unsigned()->nullable($value = false);
             $table->timestamps();
         });
