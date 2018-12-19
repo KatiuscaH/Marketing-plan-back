@@ -20,7 +20,7 @@ class MarketingResource extends JsonResource
             "clientes"=> $this->clientes,
             "competencia"=> $this->competencia,
             "created_at"=> $this->created_at,
-            "cuatrop"=> $this->cuatrop,
+            "coatrop"=> $this->coatrop,
             "dofa"=> $this->dofa,
             "historia"=> $this->historia,
             "id"=> $this->id,

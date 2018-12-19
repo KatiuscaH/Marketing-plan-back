@@ -9,7 +9,7 @@ class Estrategia extends Model
     //
     protected $fillable = ['tactica', 'responsable', 'fecha', 'presupuesto', 'objetivo_id', 'indicador_logro'];
 
-    public function objetivos(){
+    public function objetivo(){
         return $this->belongsTo(Objetivo::class, 'objetivo_id');
     }
 }

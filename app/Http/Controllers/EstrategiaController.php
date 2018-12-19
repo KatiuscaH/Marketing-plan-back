@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Estrategia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\EstrategiasResource;
 
 class EstrategiaController extends Controller
 {
@@ -16,11 +17,13 @@ class EstrategiaController extends Controller
     public function index()
     {
         $id = Auth::user()->marketing_id;
-        $estrategias = Estrategia::whereHas('objetivos.marketing', function($query) use($id){
+        $estrategias = Estrategia::whereHas('objetivo.marketing', function($query) use($id){
             $query->where('marketings.id', $id);
-        })->get();
+        })->with('objetivo')->get();
 
-        return response()->json($estrategias);
+        return EstrategiasResource::collection($estrategias);
+        //return response()->json($estrategias);
+
     }
 
     /**

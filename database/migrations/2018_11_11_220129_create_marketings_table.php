@@ -21,7 +21,7 @@ class CreateMarketingsTable extends Migration
             $table->longText('historia')->nullable();
             $table->longText('pest')->nullable();
             $table->longText('porter')->nullable();
-            $table->longText('cuatrop')->nullable();
+            $table->longText('coatrop')->nullable();//cuatrop
             $table->longText('clientes')->nullable();
             $table->longText('competencia')->nullable();
             $table->longText('proveedores')->nullable();

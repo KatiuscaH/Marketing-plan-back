@@ -33,6 +33,10 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo(Marketing::class);
     }
 
+    public function files(){
+        return $this->hasMany(File::class);
+    }
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
