@@ -15,4 +15,8 @@ class Marketing extends Model
     public function objetivos(){
         return $this->hasMany(Objetivo::class, 'marketing_id');
     }
+
+    public function estrategias(){
+        return $this->hasManyThrough(Estrategia::class, Objetivo::class);
+    }
 }

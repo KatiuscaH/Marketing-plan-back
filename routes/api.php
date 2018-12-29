@@ -44,6 +44,11 @@ Route::group(['middleware' => 'auth:api'], function () {
         Route::put('{marketing}/ansoff', 'MarketingController@ansoff');
 
     });
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('marketing', 'MarketingController@mostrarTodo');
+        Route::get('marketing/{marketing}/estrategias', 'MarketingController@mostrarEstrategias');
+    });
+    
 
     Route::group(['prefix' => 'auth'], function () {
         Route::post('logout', 'AuthController@logout');
