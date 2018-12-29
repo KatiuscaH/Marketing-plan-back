@@ -17,6 +17,7 @@ class CreateObjetivosTable extends Migration
             $table->increments('id');
             $table->text('nombre')->nullable($value = false);
             $table->integer('marketing_id')->unsigned()->nullable($value = false);
+            $table->boolean('cumplido')->default(false);
             $table->timestamps();
         });
     }

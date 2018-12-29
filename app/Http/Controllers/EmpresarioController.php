@@ -108,4 +108,8 @@ class EmpresarioController extends Controller
             "msg" => $empresario->delete()
         ]);
     }
+
+    public function objetivos(User $empresario){
+        return response()->json($empresario->marketing->objetivos);
+    }
 }

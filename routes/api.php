@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('estrategias', 'EstrategiaController');
     Route::apiResource('files', 'FileController');
     Route::get('/objetivos/{objetivo}/estrategias', 'ObjetivoController@estrategias');
+    Route::get('empresario/{empresario}/objetivos', 'EmpresarioController@objetivos');
     Route::group(['prefix' => 'marketing'], function () {
         Route::put('{marketing}/presentacion', 'MarketingController@presentacion');
         Route::put('{marketing}/historia', 'MarketingController@historia');
