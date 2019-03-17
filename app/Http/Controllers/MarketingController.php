@@ -101,7 +101,11 @@ class MarketingController extends Controller
     }
 
     public function mostrarEstrategias(Marketing $marketing){
-        return response()->json($marketing->estrategias);
+        return response()->json([
+            'estrategias' => $marketing->estrategias,
+            'objetivos' => $marketing->objetivos,
+            'medios' => $marketing->medios
+        ]);
     }
 
     public function presentacion(Marketing $marketing, Request $request)

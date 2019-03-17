@@ -15,10 +15,15 @@ class ObjetivoController extends Controller
      */
     public function index()
     {
-        //
-        return response()->json(
-            Objetivo::where('marketing_id', Auth::user()->marketing_id)->get()
-        );
+        if (Auth::user()->rol === 0) {
+            return response()->json(
+                Objetivo::all()
+            );    
+        } else {
+            return response()->json(
+                Objetivo::where('marketing_id', Auth::user()->marketing_id)->get()
+            );
+        }
     }
 
     /**
