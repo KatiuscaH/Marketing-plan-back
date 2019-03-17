@@ -78,4 +78,10 @@ class FileController extends Controller
         $v = Storage::delete($file->path);
         dd($v);
     }
+
+    public function allFile(){
+        return response()->json(
+            File::with('user')->get()
+        );
+    }
 }

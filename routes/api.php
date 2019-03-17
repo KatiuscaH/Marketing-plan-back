@@ -48,6 +48,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::get('marketing', 'MarketingController@mostrarTodo');
         Route::get('marketing/{marketing}/estrategias', 'MarketingController@mostrarEstrategias');
+        Route::get('files', 'FileController@allFile');
+        
     });
     
 
