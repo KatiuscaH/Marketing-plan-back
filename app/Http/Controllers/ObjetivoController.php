@@ -63,7 +63,12 @@ class ObjetivoController extends Controller
     public function update(Request $request, Objetivo $objetivo)
     {
         //
-        $objetivo->nombre = $request->nombre;
+        if ($request->nombre) {
+            $objetivo->nombre = $request->nombre;
+        }
+        if ($request->cumplido !== null) {
+            $objetivo->cumplido = $request->cumplido;
+        }
         $objetivo->save();
         return response()->json($objetivo);
     }
