@@ -75,13 +75,11 @@ class EmpresarioController extends Controller
     public function update(Request $request, User $empresario)
     {
         //
-        $userData = $request->only(['nombre', 'apellido', 'password', 'email', 'periodo', 'year']);
+        $userData = $request->only(['nombre', 'apellido', 'periodo', 'year']);
         $validatedData = Validator::make($userData, [
             'nombre' => 'required|string',
             'apellido' => 'required|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required',
-            'periodo' => 'required|numeric',
+            'periodo' => 'required',
             'year' => 'required|numeric',
         ]);
         if ($validatedData->fails()) {
@@ -92,7 +90,7 @@ class EmpresarioController extends Controller
         $empresario->periodo = $request->periodo;
         $empresario->year = $request->year;
         $empresario->save();
-        return response()->json($user);
+        return response()->json($empresario);
     }
 
     /**

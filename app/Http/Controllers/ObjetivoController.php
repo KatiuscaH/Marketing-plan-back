@@ -21,7 +21,7 @@ class ObjetivoController extends Controller
             );    
         } else {
             return response()->json(
-                Objetivo::where('marketing_id', Auth::user()->marketing_id)->get()
+                Objetivo::where('marketing_id', Auth::user()->marketing_id)->with(['marketing'])->get()
             );
         }
     }
