@@ -17,7 +17,7 @@ class ObjetivoController extends Controller
     {
         if (Auth::user()->rol === 0) {
             return response()->json(
-                Objetivo::all()
+                Objetivo::with(['marketing'])->get()
             );    
         } else {
             return response()->json(
