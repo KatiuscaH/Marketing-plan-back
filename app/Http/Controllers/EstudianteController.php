@@ -65,7 +65,7 @@ class EstudianteController extends Controller
         //
         // return response()->json($estudiante);
         return response()->json(
-            $estudiante::with(['marketing'])->get()
+            User::with(['marketing'])->get()
         ); 
     }
 
