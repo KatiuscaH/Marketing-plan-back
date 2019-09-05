@@ -63,7 +63,10 @@ class EstudianteController extends Controller
     public function show(User $estudiante)
     {
         //
-        return response()->json($estudiante)->json(Auth::user()->marketing);
+        // return response()->json($estudiante);
+        return response()->json(
+            $estudiante::with(['marketing'])->get()
+        ); 
     }
 
     /**
