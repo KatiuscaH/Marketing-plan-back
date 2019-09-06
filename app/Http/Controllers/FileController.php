@@ -81,7 +81,7 @@ class FileController extends Controller
 
     public function allFile(){
         return response()->json(
-            File::with('user')->get()
+            File::with('user.marketing')->get()
         );
     }
 }
