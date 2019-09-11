@@ -18,7 +18,7 @@ class EstudianteController extends Controller
     public function index()
     {
         //
-        return response()->json(User::where('rol', 1)->get());
+        return response()->json(User::where('rol', 1)->with('marketing')->get());
     }
 
     /**
@@ -30,7 +30,7 @@ class EstudianteController extends Controller
     public function store(Request $request)
     {
         //
-        $userData = $request->only(['nombre', 'apellido', 'password','email','periodo', 'year']);
+        $userData = $request->only(['nombre', 'apellido', 'password', 'email', 'periodo', 'year']);
         $validatedData = Validator::make($userData, [
             'nombre' => 'required|string',
             'apellido' => 'required|string',
@@ -64,7 +64,6 @@ class EstudianteController extends Controller
     {
         //
         return response()->json($estudiante);
-
     }
 
     /**
@@ -77,7 +76,7 @@ class EstudianteController extends Controller
     public function update(Request $request, User $estudiante)
     {
         //
-        $userData = $request->only(['nombre', 'apellido','periodo', 'year']);
+        $userData = $request->only(['nombre', 'apellido', 'periodo', 'year']);
         $validatedData = Validator::make($userData, [
             'nombre' => 'required|string',
             'apellido' => 'required|string',
